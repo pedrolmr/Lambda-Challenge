@@ -7,26 +7,35 @@ After writing your function uncomment the matching function reference at the bot
 // 1. Write a function called helloWorld that returns the string 'Hello World!'.
 
 function helloWorld() {
-
+    return "Hello World!"
 }
 
-/*
-2. Write a function called lambdaSchool that has a single parameter called num.
-     num will be a positive integer.
-     If num is divisible by 3 return the string 'Lambda'
-     If num is divisible by 5 return the string 'School'
-     If num is divisible by 3 AND 5 return the string 'Lambda School' (notice the space)
-     If num is NOT divisible by 3 or 5 then return num.
 
-     Example:
-             lambdaSchool(15); // returns 'Lambda School'
-             lambdaSchool(8); // returns 8
-*/
+// 2. Write a function called lambdaSchool that has a single parameter called num.
+//      num will be a positive integer.
+//      If num is divisible by 3 return the string 'Lambda'
+//      If num is divisible by 5 return the string 'School'
+//      If num is divisible by 3 AND 5 return the string 'Lambda School' (notice the space)
+//      If num is NOT divisible by 3 or 5 then return num.
 
-function lambdaSchool() {
+//      Example:
+//              lambdaSchool(15); // returns 'Lambda School'
+//              lambdaSchool(8); // returns 8
 
+
+function lambdaSchool(num) {
+    if(num % 3 === 0 && num % 5 === 0){
+        return "Lambda School";
+    }else if(num % 5 === 0){
+        return "School";
+    }else if(num % 3 === 0){
+        return "Lambda"
+    }else{
+        return num;
+    }
 }
-
+lambdaSchool(15); // returns 'Lambda School'
+lambdaSchool(8); // returns 8
 /*
 3. Write a function called longestString that has a single parameter called strs.
      strs will be an array of strings.
@@ -38,9 +47,22 @@ function lambdaSchool() {
              longestString(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
 */
 
-function longestString() {
+function longestString(strs) {
+    let longestStr = ""; 
+    for (i = 0; i < strs.length; i++){
+        if(longestStr === ""){
+            longestStr = strs[i];
+        }else if(strs[i].length > longestStr.length){
+            longestStr = strs[i];
+        }
+    }
+    return longestStr;
 
 }
+
+
+longestString(['hi', 'hello', 'ni hao', 'guten tag']); // returns 'guten tag'
+longestString(['JavaScript', 'HTML', 'CSS']); // returns 'JavaScript'
 
 /*
 4. Write a function called computeUserAverageAge that has a single parameter called users
@@ -62,10 +84,25 @@ function longestString() {
              }];
              computeUserAverageAge(users); // returns 62 (This number is rounded up from 61.6666)
 */
+const users = [{
+               name: 'Brendan Eich',
+               age: 56,
+             }, {
+               name: 'Linus Torvalds',
+               age: 48,
+             }, {
+               name: 'Margaret Hamilton',
+               age: 81,
+             }];
 
-function computeUserAverageAge() {
-
+function computeUserAverageAge(users) {
+    let averageAge = 0; 
+    for (let i = 0; i < users.length; i++) {
+        averageAge += users[i].age; 
+    }
+    return Math.round(averageAge / users.length); 
 }
+computeUserAverageAge(users); 
 
 module.exports = {
  helloWorld,
